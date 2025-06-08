@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Présentation de ma thèse</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>Ma thèse en images et en 3D</h1>
+    <p>Bienvenue sur mon site de présentation de thèse.</p>
+  </header>
+
+  <section>
+    <h2>Vidéo explicative</h2>
+    <video controls width="640">
+      <source src="assets/untitled2.mp4" type="video/mp4">
+      Votre navigateur ne supporte pas la lecture de vidéos.
+    </video>
+  </section>
+
+  <section>
+    <h2>Visualisation 3D de molécule</h2>
+    <div id="viewer" style="width: 500px; height: 400px; position: relative;"></div>
+    <script>
+      let element = document.getElementById("viewer");
+      let config = { backgroundColor: "white" };
+      let viewer = $3Dmol.createViewer(element, config);
+
+      // Exemple : molécule de caféine
+      let mol = `
+        Caffeine
+         -OEChem-07122117442D
+
+         22 24  0  0  1  0            999 V2000
+            2.5682   -0.0776    0.0000 C   0  0
+            1.8585   -1.3098    0.0000 N   0  0
+            0.4489   -1.1919    0.0000 C   0  0
+            0.0000    0.0000    0.0000 N   0  0
+            0.7083    1.2322    0.0000 C   0  0
+            2.1183    1.1143    0.0000 N   0  0
+            3.0858    1.9074    0.0000 C   0  0
+            3.8153    0.6750    0.0000 C   0  0
+            3.2357   -0.6456    0.0000 N   0  0
+            4.6435   -0.7635    0.0000 C   0  0
+          ...
+      `;
+      viewer.addModel(mol, "mol");  // format 'mol'
+      viewer.setStyle({}, { stick: {}, sphere: { scale: 0.3 } });
+      viewer.zoomTo();
+      viewer.render();
+    </script>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ton Nom – Présentation de thèse</p>
+  </footer>
+
+</body>
+</html>
