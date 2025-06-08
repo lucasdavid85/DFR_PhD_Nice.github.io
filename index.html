@@ -1,61 +1,58 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Présentation de ma thèse</title>
-
-  <!-- Mol* CSS -->
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flavonoid Pathway Modeling</title>
   <style>
     body {
+      font-family: Arial, sans-serif;
+      background-color: #f7f9fb;
       margin: 0;
-      font-family: sans-serif;
-      background: #f9f9f9;
+      padding: 0;
     }
-
-    header, section, footer {
+    header {
+      background-color: #2b4c7e;
+      color: white;
       padding: 20px;
-      max-width: 900px;
-      margin: auto;
-      background: white;
-      margin-top: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      text-align: center;
     }
-
-    #molstar-container {
-      width: 100%;
-      height: 500px;
+    nav {
+      background-color: #e6ecf5;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      margin: 0 15px;
+      text-decoration: none;
+      color: #2b4c7e;
+      font-weight: bold;
+    }
+    .content {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+    h2 {
+      color: #2b4c7e;
     }
   </style>
 </head>
 <body>
-
   <header>
-    <h1>Ma thèse en images et en 3D</h1>
-    <p>Bienvenue sur mon site de présentation de thèse.</p>
+    <h1>Bioinformatics Modeling of Flavonoid Pathway Enzymes</h1>
   </header>
 
-  <section>
-    <h2>Vidéo explicative</h2>
-    <video controls width="640">
-      <source src="assets/untitled2.mp4" type="video/mp4">
-      Votre navigateur ne supporte pas la lecture de vidéos.
-    </video>
-  </section>
+  <nav>
+    <a href="dfr.html">DFR Modeling</a>
+    <a href="chi.html">CHI1, CHI2a, CHIL</a>
+  </nav>
 
-  <section>
-    <h2 style="text-align: center;">Visualisation 3D de l'enzyme (2C29) avec Mol*</h2>
-    <div id="molstar-container"></div>
-  </section>
-
-  <footer>
-    <p>&copy; 2025 Ton Nom – Présentation de thèse</p>
-  </footer>
-
-
- 
-
+  <div class="content">
+    <h2>Welcome to the Flavonoid Pathway Modeling Project</h2>
+    <p>This site presents molecular modeling research focused on enzymes involved in the flavonoid biosynthesis pathway.</p>
+    <p>Select a page above to learn more about specific enzyme studies.</p>
+  </div>
 </body>
 </html>
