@@ -6,6 +6,8 @@
   <title>Présentation de ma thèse</title>
   <link rel="stylesheet" href="style.css">
   <script src="https://3Dmol.org/build/3Dmol-min.js"></script>
+  <script src="https://unpkg.com/molstar/build/viewer/molstar.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/molstar/build/viewer/molstar.css" />
 </head>
 <body>
 
@@ -37,6 +39,20 @@
     viewer.render();
   </script>
   </section>
+
+   <div id="app"></div>
+  <script>
+    const viewer2 = new MolStar.Viewer('app', {
+      layoutIsExpanded: true,
+      layoutShowControls: true,
+      layoutShowRemoteState: false,
+      layoutShowSequence: true,
+      layoutShowLog: false,
+      layoutShowLeftPanel: true
+    });
+
+    viewer2.loadPdb('2c29'); // Load directly from RCSB
+  </script>
 
   <footer>
     <p>&copy; 2025 Ton Nom – Présentation de thèse</p>
