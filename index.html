@@ -26,19 +26,26 @@
 </head>
 <body>
 
-<section>
-  <h2 style="text-align: center;">Visualisation 3D via RCSB PDB</h2>
-  <div style="display: flex; justify-content: center;">
-    <iframe
-      src="https://www.rcsb.org/3d-view/2C29"
-      width="800"
-      height="600"
-      style="border: none;"
-      allowfullscreen
-    ></iframe>
-  </div>
-</section>
+  <h2 style="text-align:center;">Visualisation 3D de l'enzyme (2C29) avec Mol*</h2>
+  <div id="molstar-container"></div>
 
+  <!-- Mol* JS -->
+  <script src="https://unpkg.com/molstar/build/viewer/molstar.js"></script>
+
+  <script>
+    window.addEventListener('DOMContentLoaded', () => {
+      const viewer = new molstar.Viewer('molstar-container', {
+        layoutIsExpanded: true,
+        layoutShowControls: true,
+        layoutShowSequence: true,
+        layoutShowLog: false,
+        layoutShowLeftPanel: true
+      });
+
+      // ✅ Utiliser la bonne méthode — pas loadPdb()
+      viewer.loadStructureFromUrl('https://files.rcsb.org/download/2C29.pdb', 'pdb');
+    });
+  </script>
 
 </body>
 </html>
