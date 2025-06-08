@@ -51,22 +51,52 @@
     </script>
   </section>
 
-  <section>
-    <h2>Visualisation avec Mol* Viewer (2C29)</h2>
-    <div id="viewerMolStar"></div>
-    <script>
-      const viewer2 = new MolStar.Viewer("viewerMolStar", {
-        layoutIsExpanded: false,
-        layoutShowControls: true,
-        layoutShowRemoteState: false,
-        layoutShowSequence: true,
-        layoutShowLog: false,
-        layoutShowLeftPanel: false
-      });
+<section>
+  <h2>Visualisation avec Mol* Viewer (2C29, focus chaîne D)</h2>
+  <div id="viewerMolStar"></div>
+  <script>
+    const viewer2 = new MolStar.Viewer("viewerMolStar", {
+      layoutIsExpanded: false,
+      layoutShowControls: true,
+      layoutShowRemoteState: false,
+      layoutShowSequence: true,
+      layoutShowLog: false,
+      layoutShowLeftPanel: false
+    });
 
-      viewer2.loadPdb("2c29");
-    </script>
-  </section>
+    viewer2.loadPdb("2c29").then(() => {
+      const plugin = viewer2.plugin;
+
+      // Appliquer style cartoon par défaut à toute la molécule
+      plugin.managers.structure.component.applyPreset('cartoon');
+
+      // Créer une sélection : chaîne D, résidus NPH et DQH
+      const selectionExpression = {
+        kind: 'group',
+        operator: 'and',
+        expressions: [
+          { kind: 'atom-test', test: { kind: 'chain-test', chain_id: 'D' } },
+          { kind: 'residue-test', test: { kind: 'resname', value: ['NPH', 'DQH'] } }
+        ]
+      };
+
+      plugin.managers.structure.selection.fromExpression(selectionExpression, 'focus-residues')
+        .then(sel => {
+          // Créer un composant visuel pour la sélection
+          return plugin.managers.structure.component.addComponentFromSelection(sel, 'licorice-residues');
+        })
+        .then(component => {
+          // Appliquer un style licorice sur les résidus sélectionnés
+          return plugin.managers.structure.visual.updateRepresentations(component, {
+            type: 'ball-and-stick',
+            color: 'element-symbol',
+            size: 'uniform'
+          });
+        });
+    });
+  </script>
+</section>
+
 
   <footer>
     <p>&copy; 2025 Ton Nom – Présentation de thèse</p>
