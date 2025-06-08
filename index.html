@@ -67,10 +67,10 @@
     viewer2.loadPdb("2c29").then(() => {
       const plugin = viewer2.plugin;
 
-      // Appliquer style cartoon par défaut à toute la molécule
+      // Apply cartoon globally
       plugin.managers.structure.component.applyPreset('cartoon');
 
-      // Créer une sélection : chaîne D, résidus NPH et DQH
+      // Define selection: chain D and residues NPH or DQH
       const selectionExpression = {
         kind: 'group',
         operator: 'and',
@@ -80,19 +80,17 @@
         ]
       };
 
+      // Create selection and apply licorice (ball-and-stick)
       plugin.managers.structure.selection.fromExpression(selectionExpression, 'focus-residues')
-        .then(sel => {
-          // Créer un composant visuel pour la sélection
-          return plugin.managers.structure.component.addComponentFromSelection(sel, 'licorice-residues');
-        })
-        .then(component => {
-          // Appliquer un style licorice sur les résidus sélectionnés
-          return plugin.managers.structure.visual.updateRepresentations(component, {
-            type: 'ball-and-stick',
-            color: 'element-symbol',
-            size: 'uniform'
-          });
-        });
+        .then(sel => plugin.managers.structure.component.addComponentFromSelection(sel, 'licorice-residues'))
+        .then(component => plugin.managers.structure.visual.updateRepresentations(component, {
+          type: 'ball-and-stick',
+          color: 'element-symbol',
+          size: 'uniform'
+        }).then(() => {
+          // ✨ Focus the camera on the licorice selection
+          plugin.managers.camera.focusComponent(component, true);
+        }));
     });
   </script>
 </section>
