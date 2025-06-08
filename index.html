@@ -6,7 +6,6 @@
   <title>Présentation de ma thèse</title>
 
   <!-- Mol* CSS -->
-  <link rel="stylesheet" href="https://unpkg.com/molstar/build/viewer/molstar.css" />
 
   <style>
     body {
@@ -55,22 +54,8 @@
     <p>&copy; 2025 Ton Nom – Présentation de thèse</p>
   </footer>
 
-  <!-- Mol* JS -->
-  <script src="https://unpkg.com/molstar/build/viewer/molstar.js"></script>
-  <script>
-    window.addEventListener('DOMContentLoaded', () => {
-      const viewer = new molstar.Viewer('molstar-container', {
-        layoutIsExpanded: true,
-        layoutShowControls: true,
-        layoutShowRemoteState: false,
-        layoutShowSequence: true,
-        layoutShowLog: false,
-        layoutShowLeftPanel: true
-      });
 
-      viewer.loadPdb('https://files.rcsb.org/download/2C29.pdb');
-    });
-  </script>
+ 
 
 </body>
 </html>
