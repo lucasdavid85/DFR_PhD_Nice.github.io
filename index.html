@@ -26,28 +26,9 @@
     <h2>Visualisation 3D de molécule</h2>
     <div id="viewer" style="width: 500px; height: 400px; position: relative;"></div>
     <script>
-      let element = document.getElementById("viewer");
-      let config = { backgroundColor: "white" };
-      let viewer = $3Dmol.createViewer(element, config);
-
-      // Exemple : molécule de caféine
-      let mol = `
-        Caffeine
-         -OEChem-07122117442D
-
-         22 24  0  0  1  0            999 V2000
-            2.5682   -0.0776    0.0000 C   0  0
-            1.8585   -1.3098    0.0000 N   0  0
-            0.4489   -1.1919    0.0000 C   0  0
-            0.0000    0.0000    0.0000 N   0  0
-            0.7083    1.2322    0.0000 C   0  0
-            2.1183    1.1143    0.0000 N   0  0
-            3.0858    1.9074    0.0000 C   0  0
-            3.8153    0.6750    0.0000 C   0  0
-            3.2357   -0.6456    0.0000 N   0  0
-            4.6435   -0.7635    0.0000 C   0  0
-          ...
-      `;
+  
+      
+      let viewer = $3Dmol.createViewer("viewer", { backgroundColor: "white" });
       viewer.addModel("COO", "smi");  // format 'mol'
       viewer.setStyle({}, { stick: {}, sphere: { scale: 0.3 } });
       viewer.zoomTo();
