@@ -36,30 +36,37 @@
   </section>
 
 <section>
-  <h2>Visualisation avec 3Dmol.js (2C29 – chaîne D + résidus NPH/DQH)</h2>
-<div id="viewer3dmol" style="width: 600px; height: 450px; margin-left: auto; margin-right: auto;"></div>
+  <h2 style="text-align: center;">Visualisation avec 3Dmol.js (2C29 – chaîne D + résidus NPH/DQH)</h2>
+
+  <div style="display: flex; justify-content: center;">
+    <div id="viewer3dmol" style="width: 600px; height: 450px; border: 1px solid #ccc;"></div>
+  </div>
+
   <script>
     const viewer1 = $3Dmol.createViewer("viewer3dmol", {
       backgroundColor: "white"
     });
 
     $3Dmol.download("pdb:2c29", viewer1, {}, function () {
-      // Chaîne D en cartoon coloré
+      // Hide chain F completely
+      viewer1.setStyle({ chain: "F" }, {});
+
+      // Show chain D in cartoon
       viewer1.setStyle({ chain: "D" }, { cartoon: { color: "spectrum" } });
 
-      // Résidus NPH en licorice (bâtons)
-      viewer1.setStyle({ resn: "NAP", chain: "D" }, { stick: { radius: 0.2 } });
+      // Show NPH in licorice (sticks)
+      viewer1.setStyle({ resn: "NAP", chain: "D" }, { stick: { radius: 0.25 } });
 
-      // Résidus DQH en licorice (bâtons)
-      viewer1.setStyle({ resn: "DQH", chain: "D" }, { stick: { radius: 0.2 } });
+      // Show DQH in licorice (sticks)
+      viewer1.setStyle({ resn: "DQH", chain: "D" }, { stick: { radius: 0.25 } });
 
-      // Zoom sur la chaîne D
+      // Zoom only on chain D
       viewer1.zoomTo({ chain: "D" });
       viewer1.render();
     });
-    
   </script>
 </section>
+
 
 <!-- <section>
   <h2>Visualisation avec Mol* Viewer (2C29, focus chaîne D)</h2>
