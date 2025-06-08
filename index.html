@@ -25,15 +25,17 @@
   <section>
     <h2>Visualisation 3D de molécule</h2>
     <div id="viewer" style="width: 500px; height: 400px; position: relative;"></div>
-    <script>
-  
-      
-      let viewer = $3Dmol.createViewer("viewer", { backgroundColor: "white" });
-      viewer.addModel("COO", "smi");  // format 'mol'
-      viewer.setStyle({}, { stick: {}, sphere: { scale: 0.3 } });
-      viewer.zoomTo();
-      viewer.render();
-    </script>
+ <script>
+    const viewer = $3Dmol.createViewer("viewer", { backgroundColor: "white" });
+
+    // SMILES string for dihydrokaempferol
+    const smiles = "C1=CC(=CC=C1C2C(C(=O)C3=CC(=C(C=C3)O)O)O)O";
+
+    viewer.addModel(smiles, "smi"); // format = SMILES
+    viewer.setStyle({}, { stick: {}, sphere: { scale: 0.3 } });
+    viewer.zoomTo();
+    viewer.render();
+  </script>
   </section>
 
   <footer>
